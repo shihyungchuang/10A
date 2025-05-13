@@ -50,22 +50,38 @@ h1 {
 .card-container {
   display: flex;                 /* 使用彈性盒模型排版 */
   flex-wrap: wrap;              /* 當空間不足時允許換行 */
-  gap: 10px;                    /* 卡片之間的間距為 20px */
-  padding: 10px;                /* 容器內距 20px */
+  gap: 12px;                    /* 卡片之間的間距為 20px */
+  padding: 12px;                /* 容器內距 20px */
   justify-content: center;     /* 所有卡片在容器內置中對齊 */
 }
 
 /* 每一張卡片的樣式 */
 .card {
-  width: 150px;                 /* 固定卡片寬度為 200px */
+  width: 200px;                 /* 固定卡片寬度為 200px （PC 與 iPad）*/
   border: 1px solid #ddd;       /* 外框為淺灰色細線 */
-  padding: 0px 10px;            /* 上下內距 8px、左右 10px */
+  padding: 8px 10px;            /* 上下內距 8px、左右 10px */
   border-radius: 8px;           /* 圓角 8px，讓卡片邊緣較柔和 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加細緻陰影效果 */
   background-color: #fff;       /* 背景為白色 */
   cursor: pointer;              /* 滑鼠移上去變成手指圖示 */
   transition: transform 0.2s ease; /* 定義變形動畫效果（滑鼠 hover） */
 }
+
+
+/* 📱 手機直式（小於 480px）：一排兩張 */
+@media (max-width: 480px) and (orientation: portrait) {
+  .card {
+    flex: 1 1 calc(45% - 12px);
+  }
+}
+
+/* 📱 手機橫式：一排三張 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .card {
+    flex: 1 1 calc(33.33% - 12px);
+  }
+}
+
 
 /* 滑鼠移到卡片上時的動畫效果 */
 .card:hover {
