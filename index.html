@@ -26,117 +26,131 @@
 <meta property="article:modified_time" content="2025-05-13T00:00:00Z">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-
-    h1 {
-      text-align: center;
-      padding: 20px 0;
-      margin: 0;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 24px;
-      border-bottom: 4px solid #388E3C;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
-      justify-content: center;
-    }
-
-    .card {
-      width: 200px;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    h2 {
-      padding-left: 20px;
-      font-size: 20px;
-  text-align: center;  /* 使文字置中 */
-    }
-
-    hr {
-      border: none;
-      border-top: 2px solid #ccc;
-      margin: 20px 0 10px;
-    }
-
-    #selectedCount {
-      color: #388E3C;
-      font-weight: bold;
-    }
-
-    .card-number {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #4CAF50;
-    }
-
-    .finish-button {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .finish-button:hover {
-      background-color: #45a049;
-    }
-
-    #finalResult {
-      padding: 20px;
-      text-align: center; /* 使報告內容置中 */
-    }
-
-    #finalResult h3 {
-      margin-bottom: 20px;
-    }
-
-    #finalResult ol, #finalResult ul {
-      text-align: left; /* 讓列表的項目顯示為左對齊 */
-      margin: 0 auto;
-      padding-left: 20px;
-      max-width: 700px; /* 限制最大寬度，避免內容太寬 */
-    }
-
-    #finalResult li {
-      margin-bottom: 10px;
-    }
-
-.page-footer {
-  background-color: #e8f5e9; /* 淺綠背景 */
-  color: #2e7d32; /* 深綠字體 */
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  border-top: 2px solid #c8e6c9;
-  margin-top: 40px;
+/* 設定整體網頁的基本字型、外距、內距與背景顏色 */
+body {
+  font-family: Arial, sans-serif; /* 使用 Arial 無襯線字體，若無則使用系統預設的 sans-serif */
+  margin: 0;                      /* 移除整體頁面的外距，避免預設空白 */
+  padding: 0;                     /* 移除整體頁面的內距 */
+  background-color: #f4f4f9;      /* 設定頁面背景為淡灰偏紫的顏色，給人柔和的感覺 */
 }
 
+/* 頁面主標題 h1 的樣式 */
+h1 {
+  text-align: center;             /* 文字置中 */
+  padding: 20px 0;                /* 上下內距 20px，左右為 0 */
+  margin: 0;                      /* 移除外距 */
+  background-color: #4CAF50;      /* 設定背景色為綠色 */
+  color: white;                   /* 字體為白色 */
+  font-size: 24px;                /* 字體大小為 24px */
+  border-bottom: 4px solid #388E3C; /* 底部加一條深綠色的邊框，增加層次感 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 增加陰影效果，讓標題有浮出來的感覺 */
+}
 
+/* 容器：用來排列所有卡片 */
+.card-container {
+  display: flex;                 /* 使用彈性盒模型排版 */
+  flex-wrap: wrap;              /* 當空間不足時允許換行 */
+  gap: 10px;                    /* 卡片之間的間距為 20px */
+  padding: 10px;                /* 容器內距 20px */
+  justify-content: center;     /* 所有卡片在容器內置中對齊 */
+}
+
+/* 每一張卡片的樣式 */
+.card {
+  width: 180px;                 /* 固定卡片寬度為 200px */
+  border: 1px solid #ddd;       /* 外框為淺灰色細線 */
+  padding: 0px 10px;            /* 上下內距 8px、左右 10px */
+  border-radius: 8px;           /* 圓角 8px，讓卡片邊緣較柔和 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加細緻陰影效果 */
+  background-color: #fff;       /* 背景為白色 */
+  cursor: pointer;              /* 滑鼠移上去變成手指圖示 */
+  transition: transform 0.2s ease; /* 定義變形動畫效果（滑鼠 hover） */
+}
+
+/* 滑鼠移到卡片上時的動畫效果 */
+.card:hover {
+  transform: scale(1.03);       /* 放大 3%，提供微互動感受 */
+}
+
+/* 第二層標題 h2 樣式（用於分段或小標） */
+h2 {
+  padding-left: 20px;           /* 左側內距 20px */
+  font-size: 20px;              /* 字體大小為 20px */
+  text-align: center;           /* 文字置中 */
+}
+
+/* 水平線樣式，用於分隔區塊 */
+hr {
+  border: none;                 /* 移除預設邊框樣式 */
+  border-top: 2px solid #ccc;   /* 改為上方的灰色線條 */
+  margin: 20px 0 10px;          /* 上 20px、下 10px 的外距 */
+}
+
+/* 顯示已選擇數量的樣式 */
+#selectedCount {
+  color: #388E3C;               /* 深綠色字體 */
+  font-weight: bold;           /* 加粗文字 */
+}
+
+/* 卡片上顯示的序號（例如：#1、#2）樣式 */
+.card-number {
+  font-weight: bold;           /* 加粗文字 */
+  margin-bottom: 5px;          /* 下方間距 5px */
+  color: #4CAF50;              /* 使用主題綠色 */
+}
+
+/* 完成按鈕樣式 */
+.finish-button {
+  display: block;              /* 設定為區塊元素 */
+  margin: 20px auto;           /* 上下間距 20px，左右自動置中 */
+  padding: 10px 20px;          /* 上下 10px、左右 20px 的內距 */
+  font-size: 16px;             /* 字體大小 16px */
+  background-color: #4CAF50;   /* 按鈕底色為主題綠色 */
+  color: white;                /* 字體為白色 */
+  border: none;                /* 移除邊框 */
+  border-radius: 6px;          /* 圓角 6px */
+  cursor: pointer;             /* 滑鼠移過去顯示手指圖示 */
+}
+
+/* 滑鼠移到按鈕時的顏色變化 */
+.finish-button:hover {
+  background-color: #45a049;   /* 改為稍微深一點的綠色 */
+}
+
+/* 最終結果顯示區域的容器樣式 */
+#finalResult {
+  padding: 20px;               /* 內距 20px */
+  text-align: center;          /* 整體文字置中 */
+}
+
+/* 結果區塊內的標題樣式 */
+#finalResult h3 {
+  margin-bottom: 20px;         /* 標題下方的間距 */
+}
+
+/* 結果內的有序與無序清單統一設定 */
+#finalResult ol, #finalResult ul {
+  text-align: left;            /* 將項目文字靠左對齊 */
+  margin: 0 auto;              /* 左右自動置中，搭配 max-width 限制寬度 */
+  padding-left: 20px;          /* 左側縮排 20px，保持清單結構 */
+  max-width: 700px;            /* 限制清單最大寬度，避免過寬影響閱讀 */
+}
+
+/* 清單每一項的間距設定 */
+#finalResult li {
+  margin-bottom: 10px;         /* 每一項下方間距 10px，增加可讀性 */
+}
+
+/* 頁尾樣式：簡單說明、版權、聯絡資訊等可放這裡 */
+.page-footer {
+  background-color: #e8f5e9;   /* 使用非常淡的綠色作為背景 */
+  color: #2e7d32;              /* 使用較深的綠色作為文字顏色 */
+  text-align: center;          /* 文字置中 */
+  padding: 15px 0;             /* 上下內距 15px */
+  font-size: 14px;             /* 字體大小較小，適合頁尾資訊 */
+  border-top: 2px solid #c8e6c9; /* 頁尾上方加一道分隔線，為淡綠色 */
+  margin-top: 40px;            /* 與上方內容保持適當距離 */
+}
   </style>
 </head>
 <body>
